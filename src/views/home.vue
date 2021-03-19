@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Topnav from "../components/topnav.vue";
 export default {
   components: {
