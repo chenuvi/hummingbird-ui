@@ -29,15 +29,15 @@
 </template>
 
 <script lang="ts">
-import { inject, Ref } from 'vue';
+import { inject, Ref } from "vue";
 import Topnav from "../components/topnav.vue";
 export default {
   components: {
     Topnav,
   },
   setup() {
-    const asideVisible = inject<Ref<boolean>>('xxx')
-    return {asideVisible};
+    const asideVisible = inject<Ref<boolean>>("xxx");
+    return { asideVisible };
   },
 };
 </script>
