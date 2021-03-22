@@ -1,19 +1,16 @@
 <template>
-    <div>
-        doc. button
-    </div>
+  <button>
+    <slot />
+  </button>
 </template>
 
 <script>
 export default {
-    setup () {
-        
-
-        return {}
-    }
-}
+  setup() {
+    return {};
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>
