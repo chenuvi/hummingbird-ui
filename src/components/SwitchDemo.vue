@@ -1,17 +1,17 @@
 <template>
   <div>
-    <Switch v-model:value="y" />
+    <Switch v-model:value="isSwitchOn" />
   </div>
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
-import Switch from '../lib/switch.vue'
+import { ref } from "vue";
+import Switch from "../lib/switch.vue";
 export default {
-  components:{Switch},
+  components: { Switch },
   setup() {
-    const y = ref(false)
-    return {y};
+    const isSwitchOn = ref(false);
+    return { isSwitchOn };
   },
 };
 </script>

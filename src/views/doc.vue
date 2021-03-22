@@ -67,7 +67,7 @@ export default {
     .main {
       flex-grow: 1;
       order: 1;
-      background: lightcyan;
+       background: white;
       padding: 16px;
     }
   }
