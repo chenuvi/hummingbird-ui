@@ -1,5 +1,8 @@
 <template>
-  <button class="colibri-button" :class="{ [`theme-${theme}`]: theme }">
+  <button
+    class="colibri-button"
+    :class="{ [`colibri-button-theme-${theme}`]: theme }"
+  >
     <slot />
   </button>
 </template>
@@ -18,7 +21,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;
@@ -51,6 +54,25 @@ $radius: 4px;
   }
   &::-moz-focus-inner {
     border: 0;
+  }
+
+  &.colibri-button-theme-link {
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+    &:hover,
+    &:focus {
+      color: lighten($blue, 10%);
+    }
+  }
+  &.colibri-button-theme-text {
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+    &:hover,
+    &:focus {
+      background: darken(white, 5%);
+    }
   }
 }
 </style>
