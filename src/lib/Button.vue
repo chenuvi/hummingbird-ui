@@ -3,7 +3,6 @@
     class="colibri-button"
     :class="classes"
     :disabled="disabled"
-    @mouseover="test"
   >
     <span v-if="loading" class="corlibri-loadingIndicator"></span>
     <slot />
@@ -43,10 +42,7 @@ export default {
         [`colibri-button-level-${level}`]: level,
       };
     });
-    const test = () => {
-      console.log("click");
-    };
-    return { classes, test };
+    return { classes};
   },
 };
 </script>
