@@ -1,5 +1,5 @@
 <template>
-  <button class="colibri-button" :class="classes" :size="size">
+  <button class="colibri-button" :class="classes" :disabled="disabled">
     <slot />
   </button>
 </template>
@@ -18,6 +18,10 @@ export default {
     },
     level: {
       type: String,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {
@@ -40,6 +44,7 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $red: red;
+$grey: grey;
 $radius: 4px;
 
 .colibri-button {
@@ -99,7 +104,7 @@ $radius: 4px;
     height: 20px;
     padding: 0 4px;
   }
-
+  /* level */
   &.colibri-button-theme-button {
     &.colibri-button-level-main {
       background: $blue;
@@ -145,6 +150,14 @@ $radius: 4px;
       &:focus {
         color: darken($red, 10%);
       }
+    }
+  }
+  /*disabled*/
+  &[disabled] {
+    cursor: not-allowed;
+    color: $grey;
+    &:hover {
+      border-color: $grey;
     }
   }
 }
