@@ -1,5 +1,11 @@
 <template>
-  <button class="colibri-button" :class="classes" :disabled="disabled">
+  <button
+    class="colibri-button"
+    :class="classes"
+    :disabled="disabled"
+    @mouseover="test"
+  >
+    <span v-if="loading" class="corlibri-loadingIndicator"></span>
     <slot />
   </button>
 </template>
@@ -23,6 +29,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    loading: {
+      type: Boolean,
+      default: false
+    },
   },
   setup(props) {
     const { theme, size, level } = props;
@@ -33,7 +43,10 @@ export default {
         [`colibri-button-level-${level}`]: level,
       };
     });
-    return { classes };
+    const test = () => {
+      console.log("click");
+    };
+    return { classes, test };
   },
 };
 </script>
@@ -60,6 +73,26 @@ $radius: 4px;
   border: 1px solid $border-color;
   border-radius: $radius;
   box-shadow: 0 1px 0 fade-out(black, 0.95);
+
+  @keyframes spin {
+    0%{
+      transform: rotate(0);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+  .corlibri-loadingIndicator{
+    width:14px;
+    height: 14px;
+    display: inline-block;
+    margin-right:4px;
+    border-radius: 50%;
+    border-color: $blue $blue $blue transparent;
+    border-style: solid;
+    border-width: 2px;
+    animation: spin 1s infinite linear;
+  }
   & + & {
     margin-left: 8px;
   }
