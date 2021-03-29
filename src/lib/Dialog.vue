@@ -1,21 +1,23 @@
 <template>
-  <div class="colibri-dialog-overlay"></div>
-  <div class="colibri-dialog-wrapper">
-    <div class="colibri-dialog">
-      <header>
-        标题
-        <span class="colibri-dialog-close"></span>
-      </header>
-      <main>
-        <p>第一行字</p>
-        <p>第二行字</p>
-      </main>
-      <footer>
-        <Button>OK</Button>
-        <Button>Cancel</Button>
-      </footer>
+  <template v-if="visible">
+    <div class="colibri-dialog-overlay"></div>
+    <div class="colibri-dialog-wrapper">
+      <div class="colibri-dialog">
+        <header>
+          标题
+          <span class="colibri-dialog-close" @click="closeDialog"></span>
+        </header>
+        <main>
+          <p>第一行字</p>
+          <p>第二行字</p>
+        </main>
+        <footer>
+          <Button>OK</Button>
+          <Button>Cancel</Button>
+        </footer>
+      </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <script>
@@ -24,8 +26,17 @@ export default {
   components: {
     Button,
   },
-  setup() {
-    return {};
+  props: {
+    visible: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  setup(props, context) {
+    const closeDialog = () => {
+      context.emit("update:visible", false);
+    };
+    return { closeDialog };
   },
 };
 </script>
