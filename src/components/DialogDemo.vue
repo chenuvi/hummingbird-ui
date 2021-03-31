@@ -4,10 +4,18 @@
   <Button @click="toggle">toggle</Button>
   <Dialog
     v-model:visible="x"
-    :clickOverLay="true"
+    :clickOverLay="false"
     :handleOk="f1"
     :handleCancle="f2"
-  ></Dialog>
+  >
+    <template v-slot:title>
+      <b>title</b>
+    </template>
+    <template v-slot:content>
+      <p>哗啦啦</p>
+      <p>淅沥沥</p>
+    </template>
+  </Dialog>
 </template>
 
 <script>

@@ -4,12 +4,16 @@
     <div class="colibri-dialog-wrapper">
       <div class="colibri-dialog">
         <header>
-          标题
+          <slot name="title">
+            标题
+          </slot>
           <span class="colibri-dialog-close" @click="closeDialog"></span>
         </header>
         <main>
-          <p>第一行字</p>
-          <p>第二行字</p>
+          <slot name="content">
+            <p>内容1</p>
+            <p>内容233333</p>
+          </slot>
         </main>
         <footer>
           <Button @click="handleOk">OK</Button>
@@ -102,7 +106,6 @@ $border-color: #d9d9d9;
       width: 16px;
       height: 16px;
       cursor: pointer;
-      border: 1px solid red;
 
       &::before,
       &::after {
