@@ -1,26 +1,26 @@
 <template>
   <template v-if="visible">
-    <div class="colibri-dialog-overlay" @click="handleClickOverlay"></div>
-    <div class="colibri-dialog-wrapper">
-      <div class="colibri-dialog">
-        <header>
-          <slot name="title">
-            标题
-          </slot>
-          <span class="colibri-dialog-close" @click="closeDialog"></span>
-        </header>
-        <main>
-          <slot name="content">
-            <p>内容1</p>
-            <p>内容233333</p>
-          </slot>
-        </main>
-        <footer>
-          <Button @click="handleOk">OK</Button>
-          <Button @click="handleCancel">Cancel</Button>
-        </footer>
+    <Teleport to="body">
+      <div class="colibri-dialog-overlay" @click="handleClickOverlay"></div>
+      <div class="colibri-dialog-wrapper">
+        <div class="colibri-dialog">
+          <header>
+            <slot name="title"> 标题 </slot>
+            <span class="colibri-dialog-close" @click="closeDialog"></span>
+          </header>
+          <main>
+            <slot name="content">
+              <p>内容1</p>
+              <p>内容233333</p>
+            </slot>
+          </main>
+          <footer>
+            <Button @click="handleOk">OK</Button>
+            <Button @click="handleCancel">Cancel</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </Teleport>
   </template>
 </template>
 
