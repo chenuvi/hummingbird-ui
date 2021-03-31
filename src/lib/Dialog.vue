@@ -15,8 +15,8 @@
             </slot>
           </main>
           <footer>
-            <Button @click="handleOk">OK</Button>
-            <Button @click="handleCancel">Cancel</Button>
+            <Button @click="ok">OK</Button>
+            <Button @click="cancel">Cancel</Button>
           </footer>
         </div>
       </div>
@@ -39,10 +39,10 @@ export default {
       type: Boolean,
       default: true
     },
-    handleCancle: {
+    cancel: {
       type: Function
     },
-    handleOk: {
+    ok: {
       type: Function
     }
   },

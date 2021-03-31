@@ -16,12 +16,15 @@
       <p>淅沥沥</p>
     </template>
   </Dialog>
+  <h1>示例2</h1>
+  <Button @click="showDialog">show Dialog</Button>
 </template>
 
 <script>
 import Dialog from '../lib/Dialog.vue'
 import Button from '../lib/Button.vue'
-import { ref } from 'vue'
+import openDialog  from '../lib/openDialog.ts'
+import { ref, h } from 'vue'
 export default {
   components: {
     Dialog,
@@ -37,7 +40,20 @@ export default {
       return true
     }
     const f2 = () => {}
-    return { x, toggle, f1, f2 }
+    const showDialog = () => {
+      openDialog({
+        title: h('strong', {}, '标题stro'),
+        content: '你好',
+        ok() {
+          console.log('ok')
+        },
+        cancel() {
+          console.log('cancel')
+        }
+      })
+    }
+
+    return { x, toggle, f1, f2, showDialog }
   }
 }
 </script>
