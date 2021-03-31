@@ -55,13 +55,13 @@ export default {
         closeDialog()
       }
     }
-    const handleOk = () => {
-      if (props.handleOk && props.handleOk !== false) {
+    const ok = () => {
+      if (props.ok && props.ok !== false) {
         closeDialog()
       }
     }
-    const handleCancel = () => {}
-    return { closeDialog, handleClickOverlay, handleOk, handleCancel }
+    const cancel = () => {}
+    return { closeDialog, handleClickOverlay, ok, cancel }
   }
 }
 </script>

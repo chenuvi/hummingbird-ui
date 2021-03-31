@@ -11,7 +11,6 @@ const openDialog = (options) => {
         app.unmount(div);
         div.remove();
     }
-    console.log('2');
     const app = createApp({
         render() {
             return h(
@@ -33,9 +32,7 @@ const openDialog = (options) => {
             )
         }
     })
-    console.log('3');
     app.mount(div)
-    console.log('4');
 }
 
 export default openDialog
