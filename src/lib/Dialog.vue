@@ -1,33 +1,69 @@
 <template>
-  <div class="colibri-dialog-overlay"></div>
-  <div class="colibri-dialog-wrapper">
-    <div class="colibri-dialog">
-      <header>
-        标题
-        <span class="colibri-dialog-close"></span>
-      </header>
-      <main>
-        <p>第一行字</p>
-        <p>第二行字</p>
-      </main>
-      <footer>
-        <Button>OK</Button>
-        <Button>Cancel</Button>
-      </footer>
-    </div>
-  </div>
+  <template v-if="visible">
+    <Teleport to="body">
+      <div class="colibri-dialog-overlay" @click="handleClickOverlay"></div>
+      <div class="colibri-dialog-wrapper">
+        <div class="colibri-dialog">
+          <header>
+            <slot name="title"> 标题 </slot>
+            <span class="colibri-dialog-close" @click="closeDialog"></span>
+          </header>
+          <main>
+            <slot name="content">
+              <p>内容1</p>
+              <p>内容233333</p>
+            </slot>
+          </main>
+          <footer>
+            <Button @click="ok">OK</Button>
+            <Button @click="cancel">Cancel</Button>
+          </footer>
+        </div>
+      </div>
+    </Teleport>
+  </template>
 </template>
 
 <script>
-import Button from "./Button.vue";
+import Button from './Button.vue'
 export default {
   components: {
-    Button,
+    Button
   },
-  setup() {
-    return {};
+  props: {
+    visible: {
+      type: Boolean,
+      default: false
+    },
+    clickOverLay: {
+      type: Boolean,
+      default: true
+    },
+    cancel: {
+      type: Function
+    },
+    ok: {
+      type: Function
+    }
   },
-};
+  setup(props, context) {
+    const closeDialog = () => {
+      context.emit('update:visible', false)
+    }
+    const handleClickOverlay = () => {
+      if (props.clickOverLay) {
+        closeDialog()
+      }
+    }
+    const handleOk = () => {
+      if (props.handleOk && props.handleOk !== false) {
+        closeDialog()
+      }
+    }
+    const handleCancel = () => {}
+    return { closeDialog, handleClickOverlay, handleOk, handleCancel }
+  }
+}
 </script>
 
 <style lang="scss">
@@ -70,11 +106,10 @@ $border-color: #d9d9d9;
       width: 16px;
       height: 16px;
       cursor: pointer;
-      border: 1px solid red;
 
       &::before,
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         height: 1px;
         background: black;
