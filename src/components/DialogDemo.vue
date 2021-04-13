@@ -5,8 +5,8 @@
   <Dialog
     v-model:visible="x"
     :clickOverLay="false"
-    :handleOk="f1"
-    :handleCancle="f2"
+    :ok="f1"
+    :cancel="f2"
   >
     <template v-slot:title>
       <b>title</b>
